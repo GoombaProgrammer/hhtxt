@@ -130,12 +130,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub MDIParent1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        ToolStripStatusLabel1.Text = "Error (" & Date.Now.ToString("hh:mm:ss") & ")"
-        If MsgBox("An error accured and all " & m_ChildFormNumber & " projects need to be closed", MsgBoxStyle.OkCancel, "Sorry!") Then
-            Application.Exit()
-        Else
-
-        End If
+        Application.Exit()
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
