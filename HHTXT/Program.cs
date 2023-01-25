@@ -1,9 +1,11 @@
-﻿using System;
+﻿using MoonSharp.Interpreter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsApplication1.MacroLib;
 
 namespace WindowsApplication1
 {
@@ -12,6 +14,11 @@ namespace WindowsApplication1
         [STAThread]
         public static void Main()
         {
+            new MacroManager();
+            
+            // Register MoonSharp types
+            UserData.RegisterType<Document>();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MDIParent1());

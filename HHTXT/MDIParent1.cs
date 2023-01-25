@@ -17,6 +17,8 @@ namespace WindowsApplication1
 
         public static MDIParent1 instance;
 
+        public static RichTextBox ActiveTextBox => instance.GetActiveTextBox();
+
         public MDIParent1()
         {
             instance = this;
@@ -34,6 +36,22 @@ namespace WindowsApplication1
             ChildForm.Show();
         }
 
+        private RichTextBox GetActiveTextBox()
+        {
+            var activeMdiChild = instance.ActiveMdiChild;
+            if (activeMdiChild == null)
+            {
+                return null;
+            }
+
+            var activeControl = activeMdiChild.Controls[0];
+            if (activeControl == null)
+            {
+                return null;
+            }
+
+            return activeControl as RichTextBox;
+        }
         private void OpenFile(object sender, EventArgs e)
         {
             var OpenFileDialog = new OpenFileDialog();
@@ -65,19 +83,7 @@ namespace WindowsApplication1
             var Answer = Interaction.MsgBox("Do you want to save " + ActiveMdiChild.Text + "?", MsgBoxStyle.YesNo);
             if (Answer == MsgBoxResult.Yes)
             {
-                if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    var p = new System.IO.StreamWriter(SaveFileDialog1.FileName, true);
-                    foreach (object Ob in ActiveMdiChild.Controls)
-                    {
-                        RichTextBox rtb = (RichTextBox)Ob;
-                        p.WriteLine(rtb.Text);
-                        p.Flush();
-                        p.Close();
-                        ToolStripStatusLabel1.Text = "Saved project (" + DateTime.Now.ToString("hh:mm:ss") + ")";
-                    }
-
-                }
+                SaveFile();
             }
         }
 
@@ -178,21 +184,55 @@ namespace WindowsApplication1
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            foreach (object Ob in ActiveMdiChild.Controls)
+            if (ActiveMdiChild == null)
             {
-                RichTextBox rtb = (RichTextBox)Ob;
-                System.IO.File.Delete(openedFile);
-                System.IO.File.Create(openedFile).Close();
-                var p = new System.IO.StreamWriter(openedFile, true);
-                p.Write(rtb.Text);
-                p.Flush();
-                p.Close();
+                Interaction.MsgBox("You need to open a project first!");
+                return;
+            }
+
+            if (openedFile == null)
+            {
+                SaveFile();
+            }
+            else
+            {
+                SaveNoPrompt();
             }
         }
 
         private void SaveToolStripButton_Click(object sender, EventArgs e)
         {
+            if (ActiveMdiChild == null)
+            {
+                Interaction.MsgBox("You need to open a project first!");
+                return;
+            }
+            
+            SaveFile();
+        }
+
+        private void SaveFile() {
+            MacroManager.instance.InvokeEvent(MacroTrigger.BEFORE_SAVING);
+            
+            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var p = new System.IO.StreamWriter(SaveFileDialog1.FileName, true);
+                foreach (object Ob in ActiveMdiChild.Controls)
+                {
+                    RichTextBox rtb = (RichTextBox)Ob;
+                    p.WriteLine(rtb.Text);
+                    p.Flush();
+                    p.Close();
+                    ToolStripStatusLabel1.Text = "Saved project (" + DateTime.Now.ToString("hh:mm:ss") + ")";
+                }
+
+            }
+        }
+
+        private void SaveNoPrompt()
+        {
+            MacroManager.instance.InvokeEvent(MacroTrigger.BEFORE_SAVING);
+            
             foreach (object Ob in ActiveMdiChild.Controls)
             {
                 RichTextBox rtb = (RichTextBox)Ob;
@@ -202,7 +242,6 @@ namespace WindowsApplication1
                 p.Write(rtb.Text);
                 p.Flush();
                 p.Close();
-                ToolStripStatusLabel1.Text = "Saved project (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             }
         }
 
@@ -290,7 +329,7 @@ namespace WindowsApplication1
         }
         private void MacroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox("Macro is not allowed");
+            new Macros().Show();
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -348,6 +387,11 @@ namespace WindowsApplication1
                 RichTextBox rtb = (RichTextBox)Ob;
                 rtb.SelectAll();
             }
+        }
+
+        private void macrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Macros().Show();
         }
     }
 }
