@@ -3,12 +3,14 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
-    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
+    <StartupObject>WindowsApplication1.Program</StartupObject>
     <RootNamespace>WindowsApplication1</RootNamespace>
     <MyType>WindowsForms</MyType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.vb</DefaultItemExcludes>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DocumentationFile>HHTXT.xml</DocumentationFile>
@@ -24,40 +26,45 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AboutBox1.Designer.vb">
-      <DependentUpon>AboutBox1.vb</DependentUpon>
+    <Compile Update="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Update="crash.Designer.vb">
-      <DependentUpon>crash.vb</DependentUpon>
+    <Compile Update="crash.Designer.cs">
+      <DependentUpon>crash.cs</DependentUpon>
     </Compile>
-    <Compile Update="MDIParent1.Designer.vb">
-      <DependentUpon>MDIParent1.vb</DependentUpon>
+    <Compile Update="MDIParent1.Designer.cs">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
     </Compile>
-    <Compile Update="My Project\Application.Designer.vb">
+    <Compile Update="My Project\Application.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Update="My Project\Resources.Designer.vb">
+    <Compile Update="My Project\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="My Project\Settings.Designer.vb">
+    <Compile Update="My Project\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Update="Project.Designer.vb">
-      <DependentUpon>Project.vb</DependentUpon>
+    <Compile Update="Project.Designer.cs">
+      <DependentUpon>Project.cs</DependentUpon>
     </Compile>
-    <Compile Update="Selecter.Designer.vb">
-      <DependentUpon>Selecter.vb</DependentUpon>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Selecter.Designer.cs">
+      <DependentUpon>Selecter.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -65,5 +72,11 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
