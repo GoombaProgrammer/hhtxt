@@ -1,6 +1,5 @@
 ﻿Imports System.Windows.Forms
 Imports System.Text
-Imports Word = Microsoft.Office.Interop.Word
 Public Class MDIParent1
     Dim cloneValue As Integer = 0
     Dim openedFile As String
