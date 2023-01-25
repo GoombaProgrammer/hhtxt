@@ -120,7 +120,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub HelpToolStripButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpToolStripButton.Click
-        MsgBox("Copyright 2023 Creeperpower Inc., Made with Visual Basic 2010 Express")
+MsgBox("Copyright 2023 HHTXT Contributors, Made with Visual Studio")
         Dim abb As New AboutBox1
         abb.Text = "About"
         ToolStripStatusLabel1.Text = "Help Opened (" & Date.Now.ToString("hh:mm:ss") & ")"
