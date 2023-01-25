@@ -21,7 +21,7 @@ Public Class MDIParent1
         OpenFileDialog.Filter = "All Files|*.*"
         If (OpenFileDialog.ShowDialog(Me) = System.Windows.Forms.DialogResult.OK) Then
             If Not OpenFileDialog.FileName.EndsWith(".txt") Then
-                MsgBox("You are opening a file that doesnt end with .TXT, You might get errors.")
+                MsgBox("You are opening a file that doesn't end with .TXT, You might get errors.")
             End If
             openedFile = OpenFileDialog.FileName
             Dim sr As IO.StreamReader = New IO.StreamReader(OpenFileDialog.FileName, True)
@@ -121,7 +121,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub HelpToolStripButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpToolStripButton.Click
-        MsgBox("Copyright 2020 Creeperpower Inc., Made with Visual Basic 2010 Express")
+        MsgBox("Copyright 2023 Creeperpower Inc., Made with Visual Basic 2010 Express")
         Dim abb As New AboutBox1
         abb.Text = "About"
         ToolStripStatusLabel1.Text = "Help Opened (" & Date.Now.ToString("hh:mm:ss") & ")"
