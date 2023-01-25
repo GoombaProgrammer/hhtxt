@@ -249,19 +249,6 @@ Public Class MDIParent1
         ToolStripStatusLabel1.Text = "Secret Gray Label Clicked (" & Date.Now.ToString("hh:mm:ss") & ")"
     End Sub
 
-    Private Sub AddHHUSERToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub MenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub CrashToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        MsgBox("The application you just executed is not responding.", MsgBoxStyle.SystemModal)
-        crash.Show()
-    End Sub
-
     Private Sub MDIParent1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Dim fn As String() = Environment.GetCommandLineArgs()
         If fn.Length > 1 Then
