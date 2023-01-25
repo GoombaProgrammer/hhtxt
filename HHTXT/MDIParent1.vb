@@ -21,7 +21,7 @@ Public Class MDIParent1
         OpenFileDialog.Filter = "All Files|*.*"
         If (OpenFileDialog.ShowDialog(Me) = System.Windows.Forms.DialogResult.OK) Then
             If Not OpenFileDialog.FileName.EndsWith(".txt") Then
-                MsgBox("You are opening a file that doesnt end with .TXT, You might get errors.")
+                MsgBox("You are opening a file that doesn't end with .TXT, You might get errors.")
             End If
             openedFile = OpenFileDialog.FileName
             Dim sr As IO.StreamReader = New IO.StreamReader(OpenFileDialog.FileName, True)
@@ -121,7 +121,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub HelpToolStripButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpToolStripButton.Click
-        MsgBox("Copyright 2020 Creeperpower Inc., Made with Visual Basic 2010 Express")
+        MsgBox("Copyright 2023 Creeperpower Inc., Made with Visual Basic 2010 Express")
         Dim abb As New AboutBox1
         abb.Text = "About"
         ToolStripStatusLabel1.Text = "Help Opened (" & Date.Now.ToString("hh:mm:ss") & ")"
@@ -130,12 +130,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub MDIParent1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        ToolStripStatusLabel1.Text = "Error (" & Date.Now.ToString("hh:mm:ss") & ")"
-        If MsgBox("An error accured and all " & m_ChildFormNumber & " projects need to be closed", MsgBoxStyle.OkCancel, "Sorry!") Then
-            Application.Exit()
-        Else
-
-        End If
+        Application.Exit()
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
@@ -252,19 +247,6 @@ Public Class MDIParent1
 
     Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
         ToolStripStatusLabel1.Text = "Secret Gray Label Clicked (" & Date.Now.ToString("hh:mm:ss") & ")"
-    End Sub
-
-    Private Sub AddHHUSERToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub MenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub CrashToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        MsgBox("The application you just executed is not responding.", MsgBoxStyle.SystemModal)
-        crash.Show()
     End Sub
 
     Private Sub MDIParent1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load

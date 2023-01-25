@@ -12,7 +12,7 @@
         If msg = MsgBoxResult.Yes Then
             If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
                 Dim sw As IO.StreamWriter = New IO.StreamWriter(SaveFileDialog1.FileName)
-                MsgBox("You are in an unused form of HHTXT, Please go to the main form")
+                MsgBox("You are in an unused form of HHTXT, please go to the main form")
                 Application.Exit()
             End If
         End If
