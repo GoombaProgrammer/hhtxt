@@ -17,12 +17,12 @@ namespace WindowsApplication1
 {
     public class MacroManager
     {
-        public static MacroManager instance;
+        public static MacroManager Instance { get; set; }
 
         public BindingList<Macro> macros = new();
         
         public MacroManager() {
-            instance = this;
+            Instance = this;
             
             // Load macros from %appdata%/Local/HHTXT/macros.json
             // If file doesn't exist, create it
@@ -53,8 +53,9 @@ namespace WindowsApplication1
             }
         }
 
-        public void InvokeEvent(MacroTrigger trigger, params object[] args)
+        public void InvokeEvent(MacroTrigger trigger, params KeyValuePair<string, object>[] args)
         {
+            Debug.WriteLine("Invoking " + trigger.ToString());
             foreach (var macro in macros)
             {
                 if(macro.trigger == trigger)
@@ -68,7 +69,12 @@ namespace WindowsApplication1
 
                     try
                     {
-                        macro.TargetFunction.Function.Call(args);
+                        foreach (var arg in args)
+                        {
+                            macro.Compiled.Globals[arg.Key] = arg.Value;
+                        }
+                        
+                        macro.TargetFunction.Function.Call();
                     }catch(Exception e)
                     {
                         MessageBox.Show($@"Macro '{macro.name}' invocation failed:
@@ -111,7 +117,15 @@ namespace WindowsApplication1
             var doc = UserData.Create(new Document());
             Compiled.Globals.Set("document", doc);
 
-            TargetFunction = Compiled.LoadString(code);
+            try
+            {
+                TargetFunction = Compiled.LoadString(code);
+            }catch(Exception e)
+            {
+                MessageBox.Show($@"Macro '{name}' compilation failed:
+{e.Message}: {e.StackTrace}
+", "Macro Compilation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public Macro()
@@ -124,7 +138,8 @@ namespace WindowsApplication1
     {
         ON_KEY_DOWN,
         BEFORE_SAVING,
-        ON_START
+        ON_START,
+        CONTENT_CHANGED
     }
 
     public class MacroTriggerHelpers

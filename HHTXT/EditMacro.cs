@@ -15,7 +15,7 @@ namespace WindowsApplication1
     {
         public Guid SelectedMacroId { get; set; }
 
-        public Macro SelectedMacro => MacroManager.instance.macros.FirstOrDefault(x => x.macroGuid == SelectedMacroId);
+        public Macro SelectedMacro => MacroManager.Instance.macros.FirstOrDefault(x => x.macroGuid == SelectedMacroId);
 
         public EditMacro(Guid macroId)
         {
@@ -38,7 +38,7 @@ namespace WindowsApplication1
             SelectedMacro.code = fastColoredTextBox1.Text;
             SelectedMacro.trigger = (MacroTrigger)triggerSel.SelectedIndex;
             SelectedMacro.Recompile();
-            MacroManager.instance.SaveToJson();
+            MacroManager.Instance.SaveToJson();
             Close();
         }
     }

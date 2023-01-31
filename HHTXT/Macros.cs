@@ -20,7 +20,7 @@ namespace WindowsApplication1
         private void addNewMacroButton_Click(object sender, EventArgs e)
         {   
             Guid guid = Guid.NewGuid();
-            MacroManager.instance.macros.Add(new()
+            MacroManager.Instance.macros.Add(new()
             {
                 name = "New Macro",
                 macroGuid = guid,
@@ -35,7 +35,7 @@ namespace WindowsApplication1
         private void Macros_Load(object sender, EventArgs e)
         {
             macrosListBox.DisplayMember = "Name";
-            macrosListBox.DataSource = MacroManager.instance.macros;
+            macrosListBox.DataSource = MacroManager.Instance.macros;
         }
 
         private void macrosListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace WindowsApplication1
             int index = this.macrosListBox.IndexFromPoint(e.Location);
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                var f = new EditMacro(MacroManager.instance.macros[index].macroGuid);
+                var f = new EditMacro(MacroManager.Instance.macros[index].macroGuid);
                 f.Show();
             }
         }

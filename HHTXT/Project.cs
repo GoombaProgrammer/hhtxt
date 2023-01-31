@@ -19,5 +19,10 @@ namespace WindowsApplication1
         {
 
         }
+
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            MacroManager.Instance.InvokeEvent(MacroTrigger.CONTENT_CHANGED);
+        }
     }
 }

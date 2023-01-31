@@ -44,9 +44,10 @@
             // 
             this.triggerSel.FormattingEnabled = true;
             this.triggerSel.Items.AddRange(new object[] {
-            "On key down",
+            "On key down in text box",
             "Before saving",
-            "On start"});
+            "On start of HHTXT",
+            "On content changed"});
             this.triggerSel.Location = new System.Drawing.Point(57, 12);
             this.triggerSel.Name = "triggerSel";
             this.triggerSel.Size = new System.Drawing.Size(731, 23);
@@ -98,7 +99,6 @@
             this.fastColoredTextBox1.CharWidth = 8;
             this.fastColoredTextBox1.CommentPrefix = "--";
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.Lua;
             this.fastColoredTextBox1.LeftBracket = '(';

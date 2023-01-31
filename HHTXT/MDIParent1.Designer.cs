@@ -71,6 +71,7 @@ namespace WindowsApplication1
             this.HelpMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.macrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.NewToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -95,7 +96,6 @@ namespace WindowsApplication1
             this.FontDialog1 = new System.Windows.Forms.FontDialog();
             this.Label1 = new System.Windows.Forms.Label();
             this.MainMenu1 = new System.Windows.Forms.MenuStrip();
-            this.macrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -391,14 +391,21 @@ namespace WindowsApplication1
             this.DeleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("DeleteToolStripMenuItem.Image")));
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
             this.DeleteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DeleteToolStripMenuItem.Text = "&Clone";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            // 
+            // macrosToolStripMenuItem
+            // 
+            this.macrosToolStripMenuItem.Name = "macrosToolStripMenuItem";
+            this.macrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.macrosToolStripMenuItem.Text = "Macros";
+            this.macrosToolStripMenuItem.Click += new System.EventHandler(this.macrosToolStripMenuItem_Click);
             // 
             // CloseToolStripMenuItem
             // 
             this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CloseToolStripMenuItem.Text = "Close";
             this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
@@ -581,13 +588,6 @@ namespace WindowsApplication1
             this.MainMenu1.Size = new System.Drawing.Size(200, 24);
             this.MainMenu1.TabIndex = 0;
             // 
-            // macrosToolStripMenuItem
-            // 
-            this.macrosToolStripMenuItem.Name = "macrosToolStripMenuItem";
-            this.macrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.macrosToolStripMenuItem.Text = "Macros";
-            this.macrosToolStripMenuItem.Click += new System.EventHandler(this.macrosToolStripMenuItem_Click);
-            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -599,6 +599,7 @@ namespace WindowsApplication1
             this.Controls.Add(this.StatusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.MainMenu1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDIParent1";
@@ -606,6 +607,7 @@ namespace WindowsApplication1
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDIParent1_FormClosing);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MDIParent1_KeyDown);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.ToolStrip.ResumeLayout(false);

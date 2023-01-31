@@ -29,9 +29,6 @@
     <Compile Update="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Update="crash.Designer.cs">
-      <DependentUpon>crash.cs</DependentUpon>
-    </Compile>
     <Compile Update="MDIParent1.Designer.cs">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </Compile>

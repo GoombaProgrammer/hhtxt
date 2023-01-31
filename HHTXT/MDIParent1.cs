@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -212,7 +213,7 @@ namespace WindowsApplication1
         }
 
         private void SaveFile() {
-            MacroManager.instance.InvokeEvent(MacroTrigger.BEFORE_SAVING);
+            MacroManager.Instance.InvokeEvent(MacroTrigger.BEFORE_SAVING);
             
             if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -231,7 +232,7 @@ namespace WindowsApplication1
 
         private void SaveNoPrompt()
         {
-            MacroManager.instance.InvokeEvent(MacroTrigger.BEFORE_SAVING);
+            MacroManager.Instance.InvokeEvent(MacroTrigger.BEFORE_SAVING);
             
             foreach (object Ob in ActiveMdiChild.Controls)
             {
@@ -378,6 +379,8 @@ namespace WindowsApplication1
                 ActiveMdiChild.ActiveControl.Text = a.ReadToEnd();
                 a.Close();
             }
+
+            MacroManager.Instance.InvokeEvent(MacroTrigger.ON_START);
         }
 
         private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -392,6 +395,11 @@ namespace WindowsApplication1
         private void macrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Macros().Show();
+        }
+
+        private void MDIParent1_KeyDown(object sender, KeyEventArgs e)
+        {
+            MacroManager.Instance.InvokeEvent(MacroTrigger.ON_KEY_DOWN, new KeyValuePair<string, object>("key", e.KeyCode.ToString()));
         }
     }
 }
