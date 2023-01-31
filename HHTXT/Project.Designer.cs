@@ -35,31 +35,32 @@ namespace WindowsApplication1
         [DebuggerStepThrough()]
         private void InitializeComponent()
         {
-            var resources = new System.ComponentModel.ComponentResourceManager(typeof(Project));
-            RichTextBox1 = new RichTextBox();
-            SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Project));
+            this.RichTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.SuspendLayout();
             // 
             // RichTextBox1
             // 
-            RichTextBox1.Dock = DockStyle.Fill;
-            RichTextBox1.Location = new Point(0, 0);
-            RichTextBox1.Name = "RichTextBox1";
-            RichTextBox1.Size = new Size(403, 369);
-            RichTextBox1.TabIndex = 0;
-            RichTextBox1.Text = "";
+            this.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RichTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.RichTextBox1.Name = "RichTextBox1";
+            this.RichTextBox1.Size = new System.Drawing.Size(353, 346);
+            this.RichTextBox1.TabIndex = 0;
+            this.RichTextBox1.Text = "";
+            this.RichTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // Project
             // 
-            AutoScaleDimensions = new SizeF(8.0f, 16.0f);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(403, 369);
-            Controls.Add(RichTextBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Project";
-            Text = "Project";
-            FormClosed += new FormClosedEventHandler(Project_FormClosed);
-            Load += new EventHandler(Project_Load);
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(353, 346);
+            this.Controls.Add(this.RichTextBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Project";
+            this.Text = "Project";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Project_FormClosed);
+            this.Load += new System.EventHandler(this.Project_Load);
+            this.ResumeLayout(false);
 
         }
         internal RichTextBox RichTextBox1;

@@ -29,9 +29,6 @@
     <Compile Update="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Update="crash.Designer.cs">
-      <DependentUpon>crash.cs</DependentUpon>
-    </Compile>
     <Compile Update="MDIParent1.Designer.cs">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </Compile>
@@ -68,10 +65,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FCTB" Version="2.16.24" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.355802">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
+    <PackageReference Include="MoonSharp" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
