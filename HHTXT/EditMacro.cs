@@ -41,5 +41,11 @@ namespace WindowsApplication1
             MacroManager.Instance.SaveToJson();
             Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MacroManager.Instance.macros.Remove(SelectedMacro);
+            Close();
+        }
     }
 }

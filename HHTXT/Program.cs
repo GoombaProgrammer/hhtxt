@@ -18,6 +18,7 @@ namespace WindowsApplication1
             
             // Register MoonSharp types
             UserData.RegisterType<Document>();
+            UserData.RegisterType<HHTXT>();
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -37,6 +37,7 @@
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +100,7 @@
             this.fastColoredTextBox1.CharWidth = 8;
             this.fastColoredTextBox1.CommentPrefix = "--";
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.Lua;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -110,15 +112,15 @@
             this.fastColoredTextBox1.RightBracket2 = '}';
             this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.fastColoredTextBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox1.ServiceColors")));
-            this.fastColoredTextBox1.Size = new System.Drawing.Size(780, 329);
+            this.fastColoredTextBox1.Size = new System.Drawing.Size(780, 310);
             this.fastColoredTextBox1.TabIndex = 4;
             this.fastColoredTextBox1.Zoom = 100;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(713, 80);
+            this.button1.Location = new System.Drawing.Point(27, 425);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(655, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
@@ -133,11 +135,23 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "LUA-Code";
             // 
+            // button2
+            // 
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(688, 425);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Delete Macro";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // EditMacro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.fastColoredTextBox1);
@@ -163,5 +177,6 @@
         private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
     }
 }
