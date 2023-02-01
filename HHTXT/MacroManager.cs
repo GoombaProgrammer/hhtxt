@@ -115,7 +115,10 @@ namespace WindowsApplication1
             Compiled = new Script();
 
             var doc = UserData.Create(new Document());
+            var hhtxt = UserData.Create(new HHTXT());
+            
             Compiled.Globals.Set("document", doc);
+            Compiled.Globals.Set("app", hhtxt);
 
             try
             {
